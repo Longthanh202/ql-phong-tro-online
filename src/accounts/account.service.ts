@@ -16,8 +16,12 @@ export class AccountService{
         return await this.accountRepository.find();
     }
 
+    async findById(id: number): Promise<account> {
+        return this.accountRepository.findOne({ where: {id}});
+      }
+
     async create(permissionData: createAccountDto): Promise<account> {
         const account = this.accountRepository.create(permissionData);
         return this.accountRepository.save(account);
-      }
+      }   
 }
